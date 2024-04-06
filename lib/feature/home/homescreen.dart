@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pro5/feature/Details/persentation/deatils_view.dart';
+import 'package:pro5/feature/chatapp/screen/chatpage.dart';
 import 'package:pro5/feature/home/manage/cubit/cubit/weather_cubit.dart';
 import 'package:pro5/feature/tourism_type/presentation/toursim_type_view.dart';
 import 'package:pro5/location.dart';
@@ -262,22 +263,28 @@ class _HomeScreenState extends State<HomeScreen> {
                             borderRadius: BorderRadius.circular(20),
                             color: const Color.fromARGB(125, 255, 255, 255),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset('lib/core/assets/images/ai.png'),
-                                const Spacer(),
-                                const Text(
-                                  'AI Assistant',
-                                  style: TextStyle(
-                                    fontFamily: 'KohSantepheap',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, ChatPage.routeName);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset('lib/core/assets/images/ai.png'),
+                                  const Spacer(),
+                                  const Text(
+                                    'AI Assistant',
+                                    style: TextStyle(
+                                      fontFamily: 'KohSantepheap',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pro5/feature/Details/persentation/deatils_view.dart';
+import 'package:pro5/feature/chatapp/screen/chatpage.dart';
 import 'package:pro5/feature/closest_places/presentation/closest_places_view.dart';
 import 'package:pro5/feature/detects_action/presentation/widgets/detectsView.dart';
 import 'package:pro5/feature/home/homescreen.dart';
@@ -22,14 +23,8 @@ void main() async {
   runApp(const MyApp());
 }
 
-// DevicePreview(
-//   enabled: !kReleaseMode,
-//   builder: (context) => MyApp(),
-// ),
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -47,7 +42,7 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 initialRoute: '/',
                 routes: {
-                  '/': (context) => const SplashScreen(),
+                  '/': (context) => const HomeScreen(),
                   DetailsView.detailRoute: (context) => const DetailsView(
                         '',
                       ),
@@ -64,6 +59,7 @@ class MyApp extends StatelessWidget {
                   SplashScreen.splashRoute: (context) => const SplashScreen(),
                   Forget.forgetRoute: (context) => Forget(),
                   MapScreen.location: (context) => const MapScreen(),
+                  ChatPage.routeName: (context) =>const  ChatPage(),
                 },
               );
             }));
