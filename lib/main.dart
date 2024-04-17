@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 initialRoute: '/',
                 routes: {
-                  '/': (context) => const HomeScreen(),
+                  '/': (context) => const OnBoard(),
                   DetailsView.detailRoute: (context) => const DetailsView(
                         '',
                       ),
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                   SplashScreen.splashRoute: (context) => const SplashScreen(),
                   Forget.forgetRoute: (context) => Forget(),
                   MapScreen.location: (context) => const MapScreen(),
-                  ChatPage.routeName: (context) =>const  ChatPage(),
+                  ChatPage.routeName: (context) => const ChatPage(),
                 },
               );
             }));

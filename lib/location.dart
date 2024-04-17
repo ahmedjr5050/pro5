@@ -1,12 +1,14 @@
 // ignore_for_file: prefer_collection_literals, avoid_print
 
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 class MapScreen extends StatefulWidget {
   static const String location = '/map';
-  const MapScreen({super.key});
+  const MapScreen({Key? key}) : super(key: key);
 
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -15,11 +17,21 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   GoogleMapController? _controller;
   LocationData? _locationData;
+  LatLng photomarketLocation = const LatLng(
+      30.628484217416954, 31.319353635617006); // Photomarket location
+  late BitmapDescriptor customMarkerIcon; // Custom marker icon
+  double customMarkerSize = 50.0; // Size of the custom marker icon
 
   @override
   void initState() {
     super.initState();
-    _getLocation();
+    _createCustomMarkerBitmap('lib/core/assets/images/mosque.png')
+        .then((BitmapDescriptor icon) {
+      setState(() {
+        customMarkerIcon = icon;
+        _getLocation();
+      });
+    });
   }
 
   Future<void> _getLocation() async {
@@ -68,6 +80,14 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
+  Future<BitmapDescriptor> _createCustomMarkerBitmap(
+      String imageAssetPath) async {
+    ByteData byteData = await rootBundle.load(imageAssetPath);
+    Uint8List byteList =
+        byteData.buffer.asUint8List(); // Convert List<int> to Uint8List
+    return BitmapDescriptor.fromBytes(byteList);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,10 +111,22 @@ class _MapScreenState extends State<MapScreen> {
             ? Set<Marker>.from([
                 Marker(
                   markerId: const MarkerId('user_location'),
-                  position: LatLng(_locationData!.latitude!, _locationData!.longitude!),
+                  position: LatLng(
+                      _locationData!.latitude!, _locationData!.longitude!),
                   infoWindow: const InfoWindow(
                     title: 'My Location',
                   ),
+                ),
+                Marker(
+                  markerId: const MarkerId('photomarket_location'),
+                  position: photomarketLocation,
+                  infoWindow: const InfoWindow(
+                    title: 'Photomarket',
+                  ),
+                  icon: customMarkerIcon != null
+                      ? customMarkerIcon
+                      : BitmapDescriptor
+                          .defaultMarker, // Use the custom marker icon
                 ),
               ])
             : Set<Marker>.identity(),
