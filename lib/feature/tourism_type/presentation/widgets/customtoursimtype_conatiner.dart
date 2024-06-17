@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pro5/feature/closest_places/presentation/closest_places_view.dart';
+import 'package:pro5/core/helper/extention.dart';
+import 'package:pro5/core/routing/routes.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class CustomTypeContainer extends StatelessWidget {
@@ -18,7 +19,7 @@ class CustomTypeContainer extends StatelessWidget {
           EdgeInsets.only(left: 10.px, right: 10.px, bottom: 8.px, top: 1.px),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context,ClosesPLaces.colosesPlacess);
+          context.pushNamed(Routes.closestPlacesView);
         },
         child: Container(
           width: 408.px,

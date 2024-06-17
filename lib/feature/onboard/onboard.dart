@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:pro5/feature/signin/login_screen.dart';
-import 'package:pro5/feature/signup/signup_screen.dart';
+import 'package:pro5/core/helper/extention.dart';
+import 'package:pro5/core/routing/routes.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class OnBoard extends StatelessWidget {
@@ -46,7 +46,7 @@ class OnBoard extends StatelessWidget {
             ),
             MaterialButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, SignUpScreen.signupRoute);
+                  context.pushNamed(Routes.signUpScreen);
                 },
                 color: const Color(0xffDBC596),
                 height: 55.px,
@@ -70,7 +70,7 @@ class OnBoard extends StatelessWidget {
             ),
             MaterialButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, LoginScreen.loginRoute);
+                  context.pushNamed(Routes.loginScreen);
                 },
                 color: const Color(0xffDBC596),
                 height: 55.px,

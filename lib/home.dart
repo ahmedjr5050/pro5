@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
       child: Scaffold(
           appBar: AppBar(
               centerTitle: true,
-              title: Text(
+              title: const Text(
                 'Welcome',
                 style: TextStyle(
                     color: Colors.black,
@@ -28,7 +28,7 @@ class Home extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomConatiner(
+                  const CustomConatiner(
                       image: 'assets/Religious.jpg', text: 'Religious Tourism'),
                   GestureDetector(
                       onTap: () {
@@ -37,10 +37,10 @@ class Home extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => ImagePickerDemo()),
                         );
                       },
-                      child: CustomConatiner(
+                      child: const CustomConatiner(
                           image: 'assets/Cultual.jpg',
                           text: 'Cultural tourism')),
-                  CustomConatiner(
+                  const CustomConatiner(
                       image: 'assets/Adventure.jpg', text: 'Leisure Tourism'),
                 ],
               ),

@@ -3,9 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:pro5/constant.dart';
 import 'package:pro5/core/assets/imagesname/name.dart';
-import 'package:pro5/feature/closest_places/presentation/closest_places_view.dart';
-import 'package:pro5/feature/detects_action/presentation/widgets/detectsView.dart';
-import 'package:pro5/feature/scan/getimages.dart';
+import 'package:pro5/core/helper/extention.dart';
+import 'package:pro5/core/routing/routes.dart';
 
 class DetailsBody extends StatefulWidget {
   const DetailsBody(place, {super.key});
@@ -37,8 +36,7 @@ class _DetailsBodyState extends State<DetailsBody> {
           children: [
             IconButton(
                 onPressed: () {
-                  Navigator.popAndPushNamed(
-                      context, ClosesPLaces.colosesPlacess);
+                  context.pop();
                 },
                 icon: Icon(
                   color: Colorsapp.title,
@@ -89,10 +87,7 @@ class _DetailsBodyState extends State<DetailsBody> {
         ),
         child: IconButton(
           onPressed: () {
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => const DetectView()),
-                (route) => false);
+            context.pushNamed(Routes.imagePickerDemo);
           },
           icon: Image.asset(
             'lib/core/assets/images/Vector.png',
@@ -104,28 +99,22 @@ class _DetailsBodyState extends State<DetailsBody> {
       SizedBox(
         width: MediaQuery.devicePixelRatioOf(context) / 2 * 120.w,
       ),
-      GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ImagePickerDemo()),
-          );
-        },
-        child: Container(
-          height: 33.dg,
-          width: 33.dg,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: IconButton(
-            onPressed: () {},
-            icon: Image.asset(
-              height: 33.dg,
-              width: 33.dg,
-              'lib/core/assets/images/ai.png',
-              fit: BoxFit.cover,
-            ),
+      Container(
+        height: 33.dg,
+        width: 33.dg,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: IconButton(
+          onPressed: () {
+            context.pushNamed(Routes.chatScreen);
+          },
+          icon: Image.asset(
+            height: 33.dg,
+            width: 33.dg,
+            'lib/core/assets/images/ai.png',
+            fit: BoxFit.cover,
           ),
         ),
       ),

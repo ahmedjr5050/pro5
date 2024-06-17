@@ -1,11 +1,10 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pro5/core/helper/extention.dart';
+import 'package:pro5/core/routing/routes.dart';
 import 'package:pro5/feature/Details/persentation/deatils_view.dart';
-import 'package:pro5/feature/chatapp/screen/chatpage.dart';
 import 'package:pro5/feature/home/manage/cubit/cubit/weather_cubit.dart';
-import 'package:pro5/feature/tourism_type/presentation/toursim_type_view.dart';
-import 'package:pro5/location.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -43,29 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 49.px,
-                    width: 360.px,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20.px),
-                          ),
-                        ),
-                        prefixIcon: const Icon(Icons.search),
-                        contentPadding: EdgeInsets.all(10.px),
-                        prefixIconColor: const Color(0xffd2b98d),
-                        filled: true,
-                        hintStyle: const TextStyle(
-                            color: Color(0xff692D22),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Koh'),
-                        fillColor: const Color(0xff692D22),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
                     height: 10.px,
                   ),
                   weatherContainer(),
@@ -79,13 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamedAndRemoveUntil(
-                              context,
-                              TourismType.tourismTypeRoute,
-                              (route) {
-                                return false;
-                              },
-                            );
+                            context.pushNamed(Routes.tourimTypeView);
                           },
                           child: Container(
                             width: 150,
@@ -116,30 +86,36 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 150,
-                          height: 140,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: const Color.fromARGB(125, 255, 255, 255),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset(
-                                    'lib/core/assets/images/tourismPlaces.png'),
-                                const Spacer(),
-                                const Text(
-                                  'Tourism Places',
-                                  style: TextStyle(
-                                    fontFamily: 'KohSantepheap',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
+                        GestureDetector(
+                          onTap: () {
+                            context.pushNamed(Routes.closestPlacesView);
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 140,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color.fromARGB(125, 255, 255, 255),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset(
+                                      'lib/core/assets/images/tourismPlaces.png'),
+                                  const Spacer(),
+                                  const Text(
+                                    'Tourism Places',
+                                    style: TextStyle(
+                                      fontFamily: 'KohSantepheap',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -151,30 +127,36 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          width: 150,
-                          height: 140,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: const Color.fromARGB(125, 255, 255, 255),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset(
-                                    'lib/core/assets/images/camera.png'),
-                                const Spacer(),
-                                const Text(
-                                  'Camera',
-                                  style: TextStyle(
-                                    fontFamily: 'KohSantepheap',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
+                        GestureDetector(
+                          onTap: () {
+                            context.pushNamed(Routes.detectView);
+                          },
+                          child: Container(
+                            width: 150,
+                            height: 140,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color.fromARGB(125, 255, 255, 255),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset(
+                                      'lib/core/assets/images/camera.png'),
+                                  const Spacer(),
+                                  const Text(
+                                    'Camera',
+                                    style: TextStyle(
+                                      fontFamily: 'KohSantepheap',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -231,10 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   },
                                   child: GestureDetector(
                                     onTap: () {
-                                      Navigator.pushNamed(
-                                        context,
-                                        MapScreen.location,
-                                      );
+                                      context.pushNamed(Routes.locationScreen);
                                     },
                                     child: Hero(
                                       tag: 'location_hero_tag',
@@ -265,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, ChatPage.routeName);
+                              context.pushNamed(Routes.chatScreen);
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),

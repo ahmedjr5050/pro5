@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:pro5/constant.dart';
-import 'package:pro5/feature/home/homescreen.dart';
+import 'package:pro5/core/helper/extention.dart';
 import 'package:pro5/feature/tourism_type/presentation/widgets/customtoursimtype_conatiner.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -85,10 +86,7 @@ class TourismTypeBody extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.popAndPushNamed(
-              context,
-              HomeScreen.homeRoute,
-            );
+            context.pop();
           },
           child: Icon(
             Icons.arrow_back,

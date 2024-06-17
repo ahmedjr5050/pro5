@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pro5/constant.dart';
-import 'package:pro5/feature/Details/persentation/deatils_view.dart';
-import 'package:pro5/feature/scan/getimages.dart';
+import 'package:pro5/core/helper/extention.dart';
+import 'package:pro5/core/routing/routes.dart';
 
 class DetectBOdy extends StatelessWidget {
   const DetectBOdy({super.key});
@@ -95,15 +95,14 @@ class DetectBOdy extends StatelessWidget {
                     children: [
                       GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(
-                                context, ImagePickerDemo.imagepicker);
+                            // context.pushNamed(Routes.imagePickerDemo);
+                            context.pushNamed(Routes.imagePickerDemo);
                           },
                           child:
                               Image.asset('lib/core/assets/images/Vector.png')),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(
-                              context, ImagePickerDemo.imagepicker);
+                          context.pushNamed(Routes.chatScreen);
                         },
                         child: Image.asset(
                           'lib/core/assets/images/layer1.png',
@@ -130,10 +129,7 @@ class DetectBOdy extends StatelessWidget {
         children: [
           IconButton(
               onPressed: () {
-                Navigator.popAndPushNamed(
-                  context,
-                  DetailsView.detailRoute,
-                );
+                context.pop();
               },
               icon: Icon(
                 Icons.arrow_back,

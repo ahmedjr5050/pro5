@@ -1,19 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomConatiner extends StatelessWidget {
   final String image;
   final String text;
 
-  CustomConatiner({required this.image, required this.text});
+  const CustomConatiner({super.key, required this.image, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(seconds: 4),
+      duration: const Duration(seconds: 4),
       transformAlignment: Alignment.bottomLeft,
-      margin: EdgeInsets.all(8),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: Colors.red[100],

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pro5/core/helper/extention.dart';
+import 'package:pro5/core/routing/routes.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:pro5/constant.dart';
 import 'package:pro5/core/assets/imagesname/name.dart';
 import 'package:pro5/feature/Details/persentation/deatils_view.dart';
-import 'package:pro5/feature/tourism_type/presentation/toursim_type_view.dart';
 
 class CLosestBody extends StatelessWidget {
   const CLosestBody({super.key});
@@ -25,8 +26,7 @@ class CLosestBody extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  Navigator.popAndPushNamed(
-                      context, TourismType.tourismTypeRoute);
+                  context.pop();
                 },
                 icon: Icon(
                   Icons.arrow_back,
@@ -86,11 +86,6 @@ class CLosestBody extends StatelessWidget {
         });
   }
 
-  // Navigator.pushAndRemoveUntil(
-  //     context,
-  //     MaterialPageRoute(
-  //         builder: (context) => const DetailsView()),
-  //     (route) => false);
   Widget conatinerdata(BuildContext context, {required int index}) {
     return Container(
       width: 210.px,
@@ -108,12 +103,14 @@ class CLosestBody extends StatelessWidget {
               height: 202.px,
               child: InkWell(
                 onTap: () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              DetailsView(NamePLACE.place[index])),
-                      (route) => false);
+                  context.pushNamed(Routes.detailsView,
+                      arguments: NamePLACE.place[index]);
+                  // Navigator.pushAndRemoveUntil(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             DetailsView(NamePLACE.place[index])),
+                  //     (route) => false);
                 },
                 child: Image.asset(
                   IMagesName.images[index],

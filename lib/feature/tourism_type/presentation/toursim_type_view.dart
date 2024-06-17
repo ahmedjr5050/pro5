@@ -3,7 +3,6 @@ import 'package:pro5/feature/tourism_type/presentation/widgets/toursim_type_body
 
 class TourismType extends StatelessWidget {
   const TourismType({super.key});
-static String tourismTypeRoute = "/tourismType";
   @override
   Widget build(BuildContext context) {
     return SafeArea(

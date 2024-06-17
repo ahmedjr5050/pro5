@@ -2,6 +2,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:pro5/core/helper/extention.dart';
+import 'package:pro5/core/routing/routes.dart';
 import 'package:pro5/feature/home/homescreen.dart';
 import 'package:pro5/feature/signin/login_screen.dart';
 import 'package:pro5/feature/signin/manager/auth/authapp.dart';
@@ -9,7 +11,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
-  static const signupRoute = '/signup';
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
@@ -47,12 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 // login & Sign up
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginScreen(),
-                      ),
-                    );
+                context.pushNamed(Routes.loginScreen);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -289,11 +285,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     User? user = await auth.signup(email, password, name, lastname, phone);
     if (user != null) {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomeScreen(),
-          ));
+     context.pushReplacementNamed(Routes.homeScreen);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
